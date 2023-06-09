@@ -1,0 +1,30 @@
+<div>
+    <h4>Add Task</h4>
+</div>
+
+<div>
+    <form #addForm="ngForm" (ngSubmit)="submitedFrm(addForm.value)">
+        <div>
+            <label for="name" class="form-label">Task</label>
+            <input type="text" name="task" #task="ngModel" required ngModel id="task" class="form-control">
+        </div>
+
+        <div>
+            <label for="email" class="form-label">Description</label>
+            <textarea  name="description" #description="ngModel" required ngModel id="description" cols="30" class="form-control"
+                rows="10"></textarea>
+        </div>
+
+        <div>
+            <label for="phone" class="form-label">Priority</label>
+            <select  name="priority" #priority="ngModel" required ngModel class="form-control" id="priority">
+                <option value="high">high</option>
+                <option value="low">low</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Task</button>
+
+    </form>
+
+</div>

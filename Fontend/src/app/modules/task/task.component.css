@@ -1,0 +1,16 @@
+nav{
+    background-color:aqua;
+    height: 60px;
+    display: flex;
+    justify-content:left;
+   
+}
+.navs li{
+    display: inline;
+    padding-left:120px;
+    font-size:17px;
+    color: black;
+    font-weight:bolder;
+    
+}
+

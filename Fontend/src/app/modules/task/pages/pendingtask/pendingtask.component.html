@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            <div class="d-flex justify-content-center  align-items-baseline">
+                <div class="me-2 h4 text-danger">
+                    <label for="priority ">
+                        Filter :
+                    </label>
+                </div>
+                <div>
+                    <select [(ngModel)]='taskPriority' (change)="filterTask()" name="priority" id="priority"
+                        class="form-control" style="width: 200px;">
+                        <option value="high">High</option>
+                        <option value="low">Low</option>
+                        <option value="all">All</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Sl No</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Task</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Priority</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of filteredList; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{ item.date }}</td>
+                        <td>{{ item.task }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.priority }}</td>
+
+                        <td>
+                            <i class="bi bi-pencil  mx-2 text-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" (click)="modalfun(item,item.id)"></i>
+                            <i class="bi bi-trash3  mx-2 text-danger" (click)="deleteTask(item.id,i)"></i>
+                            <i class="bi bi-check-lg mx-2 text-success" (click)="updateRow(item,i)"></i>
+                        </td>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <form #frmdata="ngForm" (ngSubmit)="modalfuns(frmdata.value)">
+                            <div>
+                                <label for="name" class="form-label">Task</label>
+                                <input type="text" name="task" id="task" class="form-control" [(ngModel)]="task">
+                            </div>
+                            <div>
+                                <label for="name" class="form-label">Description</label>
+                                <input type="text" name="description" id="description" class="form-control"
+                                    [(ngModel)]="description">
+                            </div>
+                            <div>
+                                <label for="name" class="form-label">priority</label>
+                                <input type="text" name="priority" id="priority" class="form-control"
+                                    [(ngModel)]="priority">
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Save
+                                    changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

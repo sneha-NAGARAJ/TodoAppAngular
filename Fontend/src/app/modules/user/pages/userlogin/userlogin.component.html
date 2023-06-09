@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center align-items-center">
+    <h4>Login Now!</h4>
+</div>
+<div class="signup-form">
+
+    <form #form="ngForm" (ngSubmit)="login(form.value)">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" ngModel name="email" id="email" class="form-control">
+            
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" ngModel name="password" id="password" class="form-control">
+            
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+</div>

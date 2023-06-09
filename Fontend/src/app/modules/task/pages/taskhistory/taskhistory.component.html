@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-12 mt-5">
+          <div class="d-flex justify-content-center  align-items-baseline">
+              <div class="me-2 h4 text-danger">
+                  <label for="priority ">
+                      Filter :
+                  </label>
+              </div>
+
+                <div>
+                  <input type="search" class="form-control" [(ngModel)] = "searchText" placeholder="search task" (keyup)="searchItems()" name="searchText" id="">
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row mt-4">
+      <div class="col-md-12">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th scope="col">Sl No</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Task</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Priority</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody *ngIf="!showSpinner">
+                  <tr *ngFor="let item of taskList; let i = index">
+                      <th scope="row">{{i+1}}</th>
+                      <td>{{ item.date }}</td>
+                      <td>{{ item.task }}</td>
+                      <td>{{ item.description }}</td>
+                      <td>{{ item.priority }}</td>
+
+                    </tbody>
+                    <ng-container *ngIf="showSpinner"></ng-container>
+                  </table>
+  

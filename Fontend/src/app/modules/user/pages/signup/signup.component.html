@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+      <form #studentForm="ngForm" (ngSubmit)="signup(studentForm.value)">
+        <div class="form-group">
+          <label for="name">Name : </label>
+          <input type="text"  name="name"  pattern="[A-Za-z]{1,32}" #fname="ngModel" required ngModel class="form-control" id="name" 
+            placeholder="Enter your name">
+  
+         <div *ngIf="fname.touched " >
+          <span *ngIf="fname.errors?.['required']">Please enter name</span>
+          <span *ngIf="fname.errors?.['pattern']">invalid</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address : </label>
+        <input type="email" asyncEmailValidator name="email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+          #femail="ngModel" required ngModel class="form-control" id="email" 
+          placeholder="Enter your email">
+      
+      </div>
+
+      <div *ngIf="femail.errors?.['asyncError'] ">
+       <span> email already exists</span>
+      </div>
+      <div *ngIf="femail.touched ">
+        <span *ngIf="femail.errors?.['required']">Please enter email</span>
+        <span *ngIf="femail.errors?.['pattern']">invalid</span>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="number">Phone number : </label>
+        <input type="tel"  name="mobile" pattern="[789][0-9]{9}" #fphone="ngModel" required ngModel class="form-control" id="number"
+          placeholder="Enter your phone number">
+        
+      </div>
+  
+      <div *ngIf="fphone.touched " >
+        
+        <span *ngIf="fphone.errors?.['pattern']">invalid</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password : </label>
+        <input type="password"  name="password"  #fpassword="ngModel" required ngModel class="form-control" id="password" 
+          placeholder="Enter your password">
+        
+      </div> 
+  
+      <div *ngIf="fpassword.touched " >
+        <span *ngIf="fpassword.errors?.['required']">Please enter name</span>
+       
+      </div>
+      
+      <div class="mb-3">
+        <label for="pic" class="form-label">Upload File (optional)</label>
+        <input type="file" (change)="onImageChanged($event)" ngModel name="pic" id="pic" class="form-control">
+        
+    </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+  
+      
+    </form>
+  
+  </div>
+  </div>
+  
